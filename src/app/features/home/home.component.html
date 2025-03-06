@@ -1,0 +1,9 @@
+<div class="d-flex rtl" style="height: 100vh; overflow: hidden; width: 100%">
+  <app-SideNav [menuValue]="menuValue" ></app-SideNav>
+  <div style="width: 100%">
+    <app-Navbar (openMenu)="openCloseMenu()"></app-Navbar>
+    <div class="contant">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

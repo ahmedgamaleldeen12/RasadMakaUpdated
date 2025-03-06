@@ -1,0 +1,47 @@
+<div [id]="'navLink' + (i + 1)">
+  <div class="d-flex align-items-center" *ngIf="!item.children">
+    <img *ngIf="isActive&&menuValue" src="./assets/icons/Rectangle 1045.svg" />
+    <li style="width: 100%;" *ngIf="(item.roleIds && item.roleIds?.includes(role)) || !item.roleIds"
+      [class]=" ' nav-item' + (i != 0 ? '  mt-3 ' : '') + (isActive ? '  expanded ' : '') ">
+      <a [routerLinkActiveOptions]="{ exact: true }" [routerLinkActive]="'activatedRouter'"
+        [ngClass]="isActive ? 'text-white' : 'text-white-40'"
+        class=" nav-link d-flex align-items-center justify-content-start" aria-current="page"
+        [routerLink]="noNav ? null : item.url">
+        <img *ngIf="item.iconUrl" class="nav-icone" [src]="item.iconUrl" [title]="item.name" />
+        <span style="white-space: nowrap" [class]="'me-3 title'  + (i == 0 ? '  fs-4 ' : '  fs-5 ')"
+          [ngClass]="menuValue ? '' : 'title-active'" [ngClass]="isActive ? 'fw-bold' : ''">{{ item.name }}
+        </span>
+        <!-- <img  *ngIf="item.children" class="nav-icone" [src]="item.iconUrl" [title]="item.name" /> -->
+      </a>
+    </li>
+  </div>
+  <app-expanded [isExpanded]="isActive" #expander *ngIf="item.children">
+    <div class="expander-header">
+      <li *ngIf="(item.roleIds && item.roleIds?.includes(role)) || !item.roleIds"
+        [class]="'nav-item' +(i != 0 ? '  mt-3 ' : '') +(isActive ? '  expanded ' : '')">
+        <div class=" text-white-40 nav-link d-flex align-items-center justify-content-start" style="cursor: pointer;">
+          <img class="nav-icone" *ngIf="item.iconUrl" [src]="item.iconUrl" [title]="item.name" />
+          <span [class]="'me-3 title m-auto fw-light ' + (i == 0 ? '  fs-4 ' : '  fs-5 ')"
+            [ngClass]="menuValue ? '' : 'title-active'" [ngClass]="isActive ? 'text-white' : 'text-white-40'">{{
+            item.name }}</span>
+          <img src="./assets/icons/Vector.svg" [style]="
+              'margin-right: 10px !important; ' +
+              (expander.isExpanded
+                ? ' transform:rotate(180deg);  -webkit-transform:rotate(180deg);   -moz-transform: rotate(180deg);  -o-transform: rotate(180deg); -ms-transform: rotate(180deg);'
+                : '')" class="m-auto" />
+
+          <!-- <img  *ngIf="item.children" class="nav-icone" [src]="item.iconUrl" [title]="item.name" /> -->
+        </div>
+      </li>
+    </div>
+    <div class="expander-body">
+      <ng-container *ngIf="menuValue">
+        <div *ngFor="let xitem of item.children; index as o">
+          <app-CustomMenuItem [menuValue]="menuValue"
+            [item]="resolveChildren(xitem,'iconUrl','./assets/icons/Group 1171276265.svg')" [role]="role"
+            [i]="i + 1 + o"></app-CustomMenuItem>
+        </div>
+      </ng-container>
+    </div>
+  </app-expanded>
+</div>

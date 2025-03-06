@@ -1,0 +1,83 @@
+@use '../../../../scss/main';
+.widt {
+  width: 32px;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // margin-top: 8px;
+}
+.nav-color {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  background: var(--mainGradient), linear-gradient(0deg, #efefef, #efefef);
+  height: 100vh;
+  max-width: 230px;
+  z-index: 2;
+  overflow: auto;
+
+  transition: all 0.5s ease;
+}
+
+.nav-line-border {
+  border: 3px;
+}
+.bell-dev {
+  width: 25px;
+  height: 25px;
+}
+.dot-size {
+  color: rgba(245, 118, 0, 1);
+  font-size: 5px;
+}
+
+a,
+i,
+img {
+  cursor: pointer;
+}
+a:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+
+.activatedRouter {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+@media screen and (max-width: 770px) {
+  .main-title {
+    display: none;
+  }
+}
+
+.title-active {
+  display: none;
+}
+
+.nav-close {
+  margin-left: 10px !important;
+  transition: all 0.5s ease;
+}
+
+.nav-open {
+  margin-left: 40px !important;
+  transition: all 0.5s ease;
+}
+
+@media (max-width: 992px) {
+  .nav-color {
+    display: none !important;
+    &.active {
+      display: unset !important;
+    }
+  }
+  .nav-open {
+    margin-left: -24px !important;
+  }
+  .nav-close {
+    margin-left: -24px !important;
+  }
+}

@@ -1,0 +1,40 @@
+@use '../../../../../scss/main';
+
+input {
+  padding: 10px var(--16, 16px);
+  border-radius: var(--8, 8px);
+  border: 1px solid #e0e0e0;
+  transition: all 500ms ease-in-out !important;
+  &:focus {
+    border: solid var(--mainColor) 1px !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: all 500ms ease-in-out !important;
+  }
+  &:read-only {
+    color: gray !important;
+    border-color: rgba(128, 128, 128, 0.479) !important;
+  }
+}
+
+.title {
+  margin-bottom: 0px !important;
+  p {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 0;
+    span {
+      color: var(--mainColor);
+    }
+  }
+  small {
+    font-size: 16px;
+    font-weight: 400;
+    color: #757575;
+  }
+}
+label{
+  color: black !important;
+  font-weight:  bold !important;
+}

@@ -1,0 +1,41 @@
+<!-- Title -->
+<div class="bg-white header-section">
+  <div class="d-flex align-items-center">
+    <h5>
+      <app-client-name class="client-name"></app-client-name>
+      <span class="fw-bold"> الإشعارات</span>
+    </h5>
+  </div>
+</div>
+<!-- Notification -->
+
+<section>
+  <div class="container-fluid">
+    <div class="py-3 px-4 bg-white " style="border-radius: 10px; margin: 0 10px 0 12px;" *ngIf="notifications.length == 0">
+      <h5 class="text-center">لا يوجد اشعارات</h5>
+    </div>
+    <div class="py-3 px-4 bg-white " style="border-radius: 10px; margin: 0 10px 0 12px;"
+      *ngIf="notifications.length > 0">
+      <div class="read-all">
+        <p (click)="readAllNotification()">تمييز الكل كمقروء</p>
+      </div>
+      <div class="notifications">
+        <div class="item" *ngFor="let notifi of notifications" (click)="readOneNotification(notifi)"
+          [ngClass]="notifi.isRead ? 'isRead' : ''">
+          <p>
+            {{ notifi.body }}
+          </p>
+          <span>
+            <i class="fa-solid fa-circle"></i>
+            {{ notifi.createdAt | date }}
+          </span>
+          <br>
+          <span style="font-weight: bold;">
+            بلاغ رقم {{ notifi.id }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

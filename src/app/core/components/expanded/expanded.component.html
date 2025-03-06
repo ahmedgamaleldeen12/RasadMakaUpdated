@@ -1,0 +1,8 @@
+<div class="expander">
+  <div (click)="toggle()">
+    <ng-content select=".expander-header"></ng-content>
+  </div>
+  <div *ngIf="isExpanded">
+    <ng-content select=".expander-body"></ng-content>
+  </div>
+</div>

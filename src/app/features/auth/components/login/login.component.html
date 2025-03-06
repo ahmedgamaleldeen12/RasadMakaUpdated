@@ -1,0 +1,56 @@
+<div class=" title">
+
+  <h1 style="font-weight: bolder;">
+    أهلاً بعودتك
+  </h1>
+</div>
+<!--  -->
+<form [formGroup]="loginForm" style="
+    display: flex;
+    padding: 50px 0px;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
+    flex-direction: column;
+  " class="default-card default-form">
+  <!-- ===================================== -->
+  <!-- ===================================== -->
+  <div class="form-col w-full">
+    <label>البريد الإلكتروني<span class="text-danger">*</span></label>
+    <input formControlName="email" style="width: 100%" type="email" placeholder="أدخل البريد الإلكتروني" />
+    <div *ngIf="form['email'].invalid && (form['email'].touched || form['email'].dirty)">
+      <div *ngIf="form['email'].errors?.['required']">
+        <small class="text-danger">يجب ادخال البريد الالكتروني</small>
+      </div>
+      <div *ngIf="form['email'].errors?.['email']">
+        <small class="text-danger">يجب ادخال البريد الالكتروني بشكل صحيح</small>
+      </div>
+    </div>
+  </div>
+  <!-- ===================================== -->
+  <!-- ===================================== -->
+  <label style="margin-top: 30px;">كلمة المرور <span class="text-danger">*</span></label>
+  <div style="position: relative; display: flex; align-items: center">
+    <input #passInput type="password" formControlName="password" style="width: 100%; padding-left: 45px" placeholder="ادخل كلمة المرور" />
+    <button style="position: absolute; z-index: 0; left: 10px" class="image-button" type="button" (click)="passInput.type =  passInput.type === 'password'?'text':'password';">
+      <!-- <img src="./assets/icons/eye.svg" height="20px" *ngIf="passInput.type=='password'"> -->
+      <i class="fa-solid fa-eye"  style="color: black;"aria-hidden="true" *ngIf="passInput.type=='password'" ></i>
+      <i class="fa fa-eye-slash" style="color: black;" aria-hidden="true" *ngIf="passInput.type=='text'"></i>
+    </button>
+  </div>
+  <!-- ================ -->
+  <!-- VALIDATION -->
+  <!-- ================ -->
+  <div *ngIf="form['password'].invalid &&(form['password'].touched || form['password'].dirty)">
+    <div *ngIf="form['password'].errors?.['required']">
+      <small class="text-danger">يجب ادخال كلمة المرور</small>
+    </div>
+  </div>
+
+  <!-- ===================================== -->
+  <!-- ===================================== -->
+  <a style="color: black; font-family: IBM Plex Sans Arabic;font-size: 16px;font-style: normal;font-weight: 500;line-height: normal;text-decoration: underline;" class="default-margin mt-3" (click)="resetPasswordRouting()">نسيت كلمه المرور؟</a>
+  <button (click)="login()" class="text-white btn button my-5">
+    {{ isBusy ? "الرجاء الانتظار" : "تسجيل الدخول" }}
+  </button>
+</form>

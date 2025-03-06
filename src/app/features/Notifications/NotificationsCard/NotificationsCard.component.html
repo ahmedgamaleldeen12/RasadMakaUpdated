@@ -1,0 +1,43 @@
+<li class="nav-item ms-2" style="margin-top: 7px;">
+  <div class="dropdown">
+    <button class="btn ballbtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="mt-1 fa-solid fa-bell fs-5" style="color:#88774F "></i>
+      <!-- Number Of Notifications -->
+      <span class="" *ngIf="numOfNotifi != 0">{{ numOfNotifi < 10 ? numOfNotifi : "9+" }}</span>
+    </button>
+    <!-- ====MENU===== -->
+    <ul class="dropdown-menu" *ngIf="notifications.length == 0">
+      <li>
+        <p class="text-center mb-0">لا يوجد اشعارات</p>
+      </li>
+    </ul>
+    <ul class="dropdown-menu" *ngIf="notifications.length > 0">
+      <div class="notifi py-2">
+        <div class="ball">
+          <p class="title">الاشعارات</p>
+          <i style="cursor: pointer" class="m-3 fa-solid fa-xmark text-black-50 "></i>
+        </div>
+        <li>
+          <hr class="dropdown-divider mb-0" />
+        </li>
+        <li class="dropdown-item" *ngFor="let notifi of notifications" (click)="readOneNotification(notifi)">
+          <div class="item shadow-sm" [ngClass]="notifi.isRead? 'isReadCard' : ''">
+            <div class="notification-status " [ngClass]="notifi.isRead ? 'isRead' : ''"></div>
+            <div>
+              <p> {{ notifi.body }}</p>
+              <span>منذ 3 دقائق</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <hr class="dropdown-divider mt-0" />
+        </li>
+        <li routerLink="/notifications">
+          <p class="show-all">
+            المزيد
+          </p>
+        </li>
+      </div>
+    </ul>
+  </div>
+</li>

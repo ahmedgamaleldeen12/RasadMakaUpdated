@@ -1,0 +1,15 @@
+<div class="text-center title" style="color: gray !important">
+  <p>كود التحقق</p>
+</div>
+<form [formGroup]="otpForm" style="display: flex; flex-direction: column; align-items: center" (keydown.enter)="save()">
+  <!-- <ng-otp-input [formControl]="code"  #ngOtpInput [config]="{ length: 6 }" (onInputChange)="onInputChange($event)"></ng-otp-input> -->
+  <p-inputotp [formControl]="code"#ngOtpInput  [integerOnly]="true" [length]="6" (onChange)="onInputChange($event)" size="large" />
+
+  <button type="button" style=" color: var(--mainColor); text-align: center; font-size: 16px; font-style: normal; font-weight: 400; line-height: normal; text-decoration-line: underline; margin-bottom: 30px;
+      margin-top: 50px;" [routerLink]="['/auth/login']" class="image-button">
+    لم تتسلم كود؟ إعادة إرساله
+  </button>
+  <button (click)="save()"style="align-self: stretch" class="text-white btn button my-5">
+    تحقق
+  </button>
+</form>

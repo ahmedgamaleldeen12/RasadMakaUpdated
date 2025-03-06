@@ -1,0 +1,47 @@
+<div class="text-center title">
+  <p>تعيين كلمة المرور </p>
+  <small>{{hashedEmail ? "قم بإنشاء كلمة المرور الخاصة بك " : "يبدو انه قد حدث خطأ ما"}}</small>
+</div>
+<form *ngIf="hashedEmail" [formGroup]="resetForm" style="display: flex; justify-content: stretch; align-items: stretch; width: 100%; flex-direction: column;" >
+  <div class="w-full">
+    <label>كلمة المرور <span class="text-danger">*</span></label>
+    <div style="position: relative; display: flex; align-items: center">
+      <input #passwordInput type="password" formControlName="password" style="width: 100%; padding-left: 45px"
+        placeholder="ادخل كلمة المرور" />
+
+      <button style="position: absolute; z-index: 0; left: 10px" class="image-button" type="button" (click)=" passwordInput.type = passwordInput.type == 'password' ? 'text' : 'password'">
+        <i class="fa fa-eye" style="color: #0c588b" aria-hidden="true" *ngIf="passwordInput.type == 'password'"></i>
+        <i class="fa fa-eye-slash" style="color: #0c588b" aria-hidden="true" *ngIf="passwordInput.type == 'text'"></i>
+      </button>
+      
+    </div>
+    <div *ngIf="resetForm.get('password')!.invalid && resetForm.get('password')!.touched">
+      <div *ngIf="resetForm.get('password')!.errors?.['required']">
+        <small class="text-danger">يجب ادخال كلمة المرور</small>
+      </div>
+      <div *ngIf="resetForm.get('password')!.errors?.['pattern']">
+        <small class="text-danger">يجب ألا تقل كلمة المرور عن 12 حرفًا وأن تكون معقدة، مثل (A, i, 2, %).</small>
+      </div>
+    </div>
+    
+
+
+    <label> تأكيد كلمة المرور <span class="text-danger">*</span></label>
+    <div style="position: relative; display: flex; align-items: center">
+      <input #repasswordInput type="password" formControlName="repassword" style="width: 100%; padding-left: 45px"
+        placeholder="ادخل كلمة المرور مجددا" />
+      <button style="position: absolute; z-index: 0; left: 10px" class="image-button" type="button" (click)="repasswordInput.type =repasswordInput.type == 'password' ? 'text' : 'password'">
+        <i class="fa fa-eye" style="color: #0c588b" aria-hidden="true" *ngIf="repasswordInput.type == 'password'"></i>
+        <i class="fa fa-eye-slash" style="color: #0c588b" aria-hidden="true" *ngIf="repasswordInput.type == 'text'"></i>
+      </button>
+    </div>
+
+    <div *ngIf="resetForm.invalid && resetForm.get('repassword')!.touched">
+      <small class="text-danger">يجب ادخال كلمة مرور مطابقة</small>
+    </div>
+
+    <button (click)="activateAccount()" class="w-100 text-white btn button my-5">
+      حفظ
+    </button>
+  </div>
+</form>

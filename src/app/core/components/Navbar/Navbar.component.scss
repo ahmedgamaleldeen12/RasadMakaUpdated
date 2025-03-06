@@ -1,0 +1,156 @@
+@use '../../../../scss/main';
+.nav-color {
+  background-color: #fff;
+}
+
+.icone-widrth {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.nav-line-border {
+  border: 3px;
+}
+.bell-dev {
+  width: 25px;
+  height: 25px;
+}
+.dot-size {
+  color: rgba(245, 118, 0, 1);
+  font-size: 5px;
+}
+.nav-widrth {
+  width: 260px;
+}
+.height-widrth {
+  min-height: 91vh;
+}
+a,
+i,
+img {
+  cursor: pointer;
+}
+a:hover {
+  background-color: rgba(255, 255, 255, 0.13);
+}
+@media screen and (max-width: 770px) {
+  .main-title {
+    display: none;
+  }
+  .icone-widrth {
+    width: 100px;
+  }
+}
+
+.dropdown {
+  .dropdown-menu {
+    text-align: right;
+    li {
+      a {
+        &:hover {
+          color: #00080C;
+          background-color: rgba(136, 119, 79, 0.15);
+        }
+      }
+    }
+  }
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 25px;
+  left: -15px;
+  border-radius: 5px;
+  box-shadow: 0 0.9px 14.22px 0 rgba(0, 18, 25, 0.03);
+  background-color: white;
+  color: rgba(121, 127, 143, 1);
+  padding: 10px;
+}
+.dropdown-item{
+  border-radius: 5px;
+}
+
+
+
+
+.l {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #001219;
+    margin-bottom: 0;
+    span {
+      color: #707070b2;
+    }
+  }
+}
+
+.ballbtn {
+  border: none;
+  outline: none;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: #f57600;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+  }
+}
+
+.ball {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 14px;
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--mainColor);
+  }
+  p {
+    margin-bottom: 0;
+    color: #9e9e9e;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}
+.show-all {
+  margin: 0 auto;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--mainColor) !important;
+}
+
+@media (max-width: 500px) {
+  .border-start {
+    border: none !important;
+
+    .navbar-brand {
+      display: none;
+    }
+  }
+
+  // .collapse.navbar-collapse {
+  //   min-width: 100% !important;
+  //   background-color: red;
+  // }
+}
